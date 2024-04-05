@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/waitingForQuestion"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A86C4">
+
+    <!-- added this for GIF feature -->
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/circle_loading_animation"
+        android:src="@drawable/circle_loading_animation"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="215dp" />
+
+    <TextView
+        android:id="@+id/tvWaitingForQuestion"
+        android:layout_width="215dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="256dp"
+        android:fontFamily="@font/roboto"
+        android:text="Waiting for Question . . ."
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
