@@ -8,15 +8,11 @@ import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 //sending data packages C-GPT
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 
@@ -24,10 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText editTextusername, editTextpassword;
     private Button btnLogin;
-
-    private int testVariable1;
-    private int testVariable2;
-    private int testVariable3;
+    private int testVariable1, testVariable2, testVariable3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTextusername = findViewById(R.id.editTextUsername);
         editTextpassword = findViewById(R.id.editTextPassword);
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnFeedback);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(() -> {
                     try {
                         // URL of your Servlet
-                        URL url = new URL("http://10.0.2.2:9999/");
+                        URL url = new URL("http://10.0.2.2:9999");
 
                         // Open connection
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -73,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("http OK");
                         } else {
                             // Request failed
-                            System.out.println("http kapoot");
+                            System.out.println("http FAIL");
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -87,13 +80,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.waitingForQuestion), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });*/
     }
 }

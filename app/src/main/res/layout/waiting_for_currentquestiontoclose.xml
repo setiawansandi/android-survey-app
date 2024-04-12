@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/waitingForQuestion"
+    android:id="@+id/waitingForQuestionToClose"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1A86C4">
@@ -10,7 +10,7 @@
     <!-- added this for GIF feature -->
 
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
+        android:id="@+id/gifImageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/circle_loading_animation"
@@ -19,12 +19,12 @@
         tools:layout_editor_absoluteY="-118dp" />
 
     <TextView
-        android:id="@+id/tvWaitingForQuestion"
-        android:layout_width="215dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="256dp"
+        android:id="@+id/tvWaitingForQuestionToClose"
+        android:layout_width="219dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="216dp"
         android:fontFamily="@font/roboto"
-        android:text="Waiting for Question . . ."
+        android:text="Response received! Please wait for the current question to conclude . . ."
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

@@ -20,7 +20,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class WaitingForQuestion extends AppCompatActivity {
+public class WaitingForCurrentQuestionToClose extends AppCompatActivity {
 
     private Handler handler = new Handler();
     private int interval = 5000; // 5 seconds interval for polling
@@ -30,12 +30,12 @@ public class WaitingForQuestion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.waiting_for_question);
+        setContentView(R.layout.waiting_for_currentquestiontoclose);
 
-        startPolling();
+        startPolling2();
     }
 
-    private void startPolling() {
+    private void startPolling2() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -77,26 +77,19 @@ public class WaitingForQuestion extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     String status = jsonObject.getString("status");
-                    String qnNo = jsonObject.getString("no");
-                    if (qnNo.equals("6")) {
+                    //String qnNo = jsonObject.getString("no");
+                    if (status.equals("false")) {
                         continueFetching = false;
-                        Intent intent = new Intent(WaitingForQuestion.this, EndscreenFeedback.class);
+                        Intent intent = new Intent(WaitingForCurrentQuestionToClose.this, WaitingForQuestion.class);
                         startActivity(intent);
                     } else {
-                        if (status.equals("true")) {
-                            Toast.makeText(WaitingForQuestion.this,"Commencing Question " + qnNo, Toast.LENGTH_LONG).show();
-                            continueFetching = false;
-                            Intent intent = new Intent(WaitingForQuestion.this, ChooseOption.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(WaitingForQuestion.this,"Please Wait...", Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(WaitingForCurrentQuestionToClose.this,"Please Wait...", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             } else {
-                Toast.makeText(WaitingForQuestion.this,"Error Fetching Question", Toast.LENGTH_SHORT).show();;
+                Toast.makeText(WaitingForCurrentQuestionToClose.this,"Error Querying Status", Toast.LENGTH_SHORT).show();;
             }
         }
     }

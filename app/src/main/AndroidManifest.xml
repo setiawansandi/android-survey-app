@@ -21,6 +21,8 @@
 
         <activity android:name=".WaitingForQuestion"></activity>
         <activity android:name=".ChooseOption"></activity>
+        <activity android:name=".WaitingForCurrentQuestionToClose"></activity>
+        <activity android:name=".EndscreenFeedback"></activity>
 
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
